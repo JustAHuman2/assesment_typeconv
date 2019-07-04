@@ -8,11 +8,13 @@
 
 package assesment_typeconv;
 
-public class Convertor {
 	public static Cracked crack(int value) {
-		return new Cracked((short)0, (short)0);		
+		int a = value / 32767;
+		int b = value % 32767;
+		return new Cracked((short) a, (short) b);
 	}
-	public static int uncrack(Cracked cracked ) {
-		return 0;
+
+	public static int uncrack(Cracked cracked) {
+		return cracked.getA() * 32767 + cracked.getB();
 	}
 }

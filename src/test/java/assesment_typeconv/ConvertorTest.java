@@ -13,9 +13,30 @@ import static org.junit.Assert.fail;
 public class ConvertorTest {
 	
 	@Test
-	public void crackUncrack() {
-		System.out.println(Convertor.crack(0));
-		System.out.println(Convertor.uncrack(Convertor.crack(0)));
-		fail("Not implemented yet");
+	public void givenNull_whenCrackUncrack_thenNull() {
+		int expected = 0;
+		int actual = Convertor.uncrack(Convertor.crack(0));
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void givenNumber_whenCrackUncrack_thenSameNumber() {
+		int expected = 12345;
+		int actual = Convertor.uncrack(Convertor.crack(12345));
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void givenBigNumber_whenCrackUncrack_thenSameNumber() {
+		int expected = 214748364;
+		int actual = Convertor.uncrack(Convertor.crack(214748364));
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void givenNegativeNumber_whenCrackUncrack_thenSameNegativeNumber() {
+		int expected = -56789;
+		int actual = Convertor.uncrack(Convertor.crack(-56789));
+		assertEquals(expected, actual);
 	}
 }
